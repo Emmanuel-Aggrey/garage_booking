@@ -1,0 +1,27 @@
+{% extends "mysite/base.html" %}
+
+    {% block inline_style %}
+        <style>
+            
+        </style>
+    {% endblock inline_style %}
+    <!-- Custom styles for this template -->
+    {% comment %} {% load static %}
+    <link href="{% static "/bootstrap.min.css" %}" rel="stylesheet"> {% endcomment %}
+
+    {% block content %}
+
+        <div id="background"></div>
+    
+        <div class="row">
+            <div class="banner mr-auto mt-5 text-light p-3 col-md-8 mb-3">
+                <h1 class="banner-text">Get your car serviced from the comfort of your home</h1>
+                <a class="btn btn-light" href="{% url 'register' %}">Get Started</a>
+                <div>
+                    <small>Already have an account?<a class="" href="{% url 'login' %}"> Login here</a></small>
+                </div>
+            </div>
+        </div>
+
+
+    {% endblock content %}

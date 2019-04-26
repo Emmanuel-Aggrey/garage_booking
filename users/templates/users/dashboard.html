@@ -1,0 +1,123 @@
+{% extends "mysite/base.html" %}
+
+    {% block content %}
+
+    <div class="container-fluid">
+    <div class="row">
+    
+            {% comment %} {% block sidebar %} {% endcomment %}
+
+                {% comment %} <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                            <span data-feather="home"></span>
+                            Bookings <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                            <span data-feather="file"></span>
+                            Profile
+                            </a>
+                        </li>
+                        <hr>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'create_booking' %}">
+                            <span data-feather="file"></span>
+                            Book Service
+                            </a>
+                        </li>
+                       
+                        </ul>
+
+                      
+                    </div>
+                </nav> {% endcomment %}
+                <div class="col-md-5 ml-sm-auto mt-4 col-lg-3">
+                <div class="card bg-light mb-3" style="max-width: 20rem;">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item bg-light" style="border:none;">
+                            <a class="" href="#">My Bookings</a>
+                        </li>
+                        <li class="list-group-item bg-light pb-4" style="border:none;">
+                            <a class="" href="{% url 'profile' %}">Profile</a>
+                        </li>
+                        
+                        <li class="list-group-item bg-light border-top pt-4" style="border:none;">
+                            <a class="" href="{% url 'create_booking' %}">Book a service</a>
+                        </li>
+                    </ul>
+                </div>
+                </div>
+                </div>
+            
+            {% comment %} {% endblock sidebar %} {% endcomment %}
+
+        <div class="col-md-7 ml-sm-auto col-lg-9 px-4">
+        {% comment %} <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"> {% endcomment %}
+            
+                {% comment %} <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"> {% endcomment %}
+                    {% comment %} <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                        <span data-feather="calendar"></span>
+                        This week
+                    </button>
+                    </div> {% endcomment %}
+
+                <h2 class="mt-3">My Bookings</h2>
+
+                    {% comment %} <h2>{{ user.username }}</h2> {% endcomment %}
+                        
+                
+
+                            {% if not services %}
+
+                                <h4 class="text-center text-muted mt-3">You have not booked any services.</h4>
+
+                            {% else %}
+
+                                {% for service in services %}
+                            
+                                    <div class="card bg-light mb-3">
+                                        <div class="card-header">Booking #{{ service.id }}</div>
+                                            <div class="card-body">
+                                                <h4 class="card-title">Service Type - {{ service.service_type }}</h4>
+                                                <p class="card-text">{{ service.service_description }}</p>
+                                                <div>
+                                                    <span class="badge badge-pill badge-info">{{ service.service_location }}</span>
+                                                    <span class="badge badge-pill badge-info">{{ service.service_booked }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                {% endfor %}
+                            {% endif %}
+
+                    
+            
+        </div>
+        
+    </div>
+    </div>
+
+    {% endblock content %}
+
+
+    
+
+      
+        {% comment %} {% if request.user != 'AnonymousUser' %}
+            <h1> {{ request.user }} </h1>
+        {% else %}
+            <h1>Please log in...</h1>
+        {% endif %} {% endcomment %}
+      
+  </div>
+</div>

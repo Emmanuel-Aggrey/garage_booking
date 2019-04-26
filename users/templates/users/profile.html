@@ -1,0 +1,29 @@
+{% extends "mysite/base.html" %}
+
+{% load crispy_forms_tags %}
+
+    {% block content %}
+
+    <div class="card bg-light mb-3 mt-3 mx-auto" style="max-width: 50%;">
+    <div class="card-header">Edit Profile</div>
+        <div class="card-body">
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <fieldset class="form-group">
+
+                    {% comment %} <legend class="border-bottom mb-4">Register</legend> {% endcomment %}
+
+                    {{ user_update_form|crispy }}
+
+                </fieldset>
+
+                <button type="submit" class="btn btn-primary">Update</button> 
+
+            </form>
+        </div>
+    </div>
+    </div>
+
+    {% endblock content %}
